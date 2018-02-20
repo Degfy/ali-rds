@@ -1,5 +1,5 @@
 {
-  "name": "@abc/mysql",
+  "name": "abc-mysql",
   "version": "3.0.1",
   "description": "abc-mysql client fork from ali-rds",
   "main": "lib/client.js",
