@@ -14,7 +14,7 @@ describe('sqlstring.test.js', function() {
     it('should patch escape to support Literal class', function() {
       assert.equal(SqlString.escape(literals.now), 'now()');
       assert.equal(SqlString.escape(new literals.Literal('sum')), 'sum');
-      assert.equal(SqlString.escape(literals.Literal('sum2()')), 'sum2()');
+      assert.equal(SqlString.escape(new literals.Literal('sum2()')), 'sum2()');
       assert.equal(SqlString.escape(literals.now), mysql.escape(literals.now));
     });
 
@@ -23,7 +23,7 @@ describe('sqlstring.test.js', function() {
       const AnotherSqlString = require('../lib/sqlstring');
       assert.equal(AnotherSqlString.escape(literals.now), 'now()');
       assert.equal(AnotherSqlString.escape(new literals.Literal('sum')), 'sum');
-      assert.equal(AnotherSqlString.escape(literals.Literal('sum2()')), 'sum2()');
+      assert.equal(AnotherSqlString.escape(new literals.Literal('sum2()')), 'sum2()');
       assert.equal(AnotherSqlString.escape(literals.now), mysql.escape(literals.now));
     });
   });
