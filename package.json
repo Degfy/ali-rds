@@ -24,11 +24,11 @@
     "mocha": "*",
     "thunk-mocha": "*"
   },
-  "homepage": "https://github.com/ali-sdk/ali-rds",
+  "homepage": "https://github.com/Degfy/ali-rds",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ali-sdk/ali-rds.git",
-    "web": "https://github.com/ali-sdk/ali-rds"
+    "url": "git://github.com/Degfy/ali-rds.git",
+    "web": "https://github.com/Degfy/ali-rds"
   },
   "bugs": {
     "url": "https://github.com/ali-sdk/ali-rds/issues",
