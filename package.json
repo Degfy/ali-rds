@@ -1,7 +1,7 @@
 {
-  "name": "ali-rds",
+  "name": "@abc/mysql",
   "version": "3.0.1",
-  "description": "Aliyun RDS client",
+  "description": "abc-mysql client fork from ali-rds",
   "main": "lib/client.js",
   "files": [
     "lib"
@@ -12,14 +12,11 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "co-wrap-all": "^1.0.0",
     "debug": "^2.2.0",
-    "mysql": "^2.13.0",
-    "pify": "^2.3.0"
+    "mysql": "^2.13.0"
   },
   "devDependencies": {
     "autod": "*",
-    "co": "4",
     "eslint": "^3.19.0",
     "eslint-config-egg": "^3.2.0",
     "istanbul": "*",
@@ -37,11 +34,15 @@
     "email": "m@fengmk2.com"
   },
   "keywords": [
-    "ali-rds"
+    "ali-rds",
+    "mysql"
   ],
   "engines": {
-    "node": ">= 4.0.0"
+    "node": ">= 8.0.0"
   },
-  "author": "fengmk2 <m@fengmk2.com> (http://fengmk2.com)",
+  "author": [
+    "degfy",
+    "fengmk2 <m@fengmk2.com> (http://fengmk2.com)"
+  ],
   "license": "MIT"
 }
