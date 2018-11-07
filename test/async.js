@@ -834,4 +834,71 @@ describe('async.test.js', function() {
       }).catch(done);
     });
   });
+
+  describe('beginTransaction when promise.all reject', function () {
+    it('should be rallback, and error must bError', async function () {
+      const db = this.db;
+      
+      let count = await db.count(table, {
+        name: prefix + 'transaction-promise-all',
+      });
+      
+      let tran = await db.beginTransaction();
+      try {
+        try {
+          const pr1 = (async _ => {
+            await tran.query('insert into ??(name, email, gmt_create, gmt_modified) \
+                    values(?, ?, now(), now())', [table, prefix + 'transaction-promise-all', prefix + 'm@transaction.com']);
+          })();
+
+          const pr2 = (async _ => {
+            throw Error('bError');
+          })();
+
+          await Promise.all([pr1, pr2]);
+          await tran.commit();
+        } catch (err) {
+          await tran.rollback(); // rollback call won't throw err
+          throw err;
+        }
+      } catch (err) {
+        assert.equal(err.message, 'bError');
+      }
+
+
+      let count2 = await db.count(table, {
+        name: prefix + 'transaction-promise-all',
+      });
+
+      assert.equal(count, count2);
+
+      tran = await db.beginTransaction();
+      try {
+        try {
+          const pr1 = (async _ => {
+            await tran.query('insert into ??(name, email, gmt_create, gmt_modified) \
+                    values(?, ?, now(), now())', [table, prefix + 'transaction-promise-all', prefix + 'm@transaction.com']);
+          })();
+
+          const pr2 = (async _ => {
+            throw Error('bError');
+          })();
+
+          await Promise.all([pr2, pr1]);
+          await tran.commit();
+        } catch (err) {
+          await tran.rollback(); // rollback call won't throw err
+          throw err;
+        }
+      } catch (err) {
+        assert.equal(err.message, 'bError');
+      }
+
+      let count3 = await db.count(table, {
+        name: prefix + 'transaction-promise-all',
+      });
+
+      assert.equal(count, count3);
+    });
+  });
 });

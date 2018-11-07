@@ -5,7 +5,7 @@ module.exports = {
   port: 3306,
   user: 'root',
   password: '',
-  database: 'test',
+  database: 'abc-mysql',
   // host: env.ALI_SDK_RDS_HOST || 'localhost',
   // port: env.ALI_SDK_RDS_PORT || 3306,
   // user: env.ALI_SDK_RDS_USER || 'root',
